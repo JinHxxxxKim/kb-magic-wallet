@@ -197,7 +197,10 @@ public class PersonalWalletServiceImpl implements PersonalWalletService {
             if (personalWalletExchange.getBuyCurrencyCode() != CurrencyCode.KRW) {
                 Long sellAmount = personalWalletExchange.getSellAmount();
                 sum += sellAmount;
-            }
+            }else if(personalWalletExchange.getSellCurrencyCode() == CurrencyCode.KRW){
+                Long buyAmount = personalWalletExchange.getBuyAmount();
+                sum -= buyAmount;
+            }    
         }
         return sum;
     }
